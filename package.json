@@ -1,0 +1,42 @@
+{
+  "name": "goomer-menu-api",
+  "version": "1.0.0",
+  "description": "API de gerenciamento de produtos, promoções e cardápio de um restaurante",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mellyssamnds/goomer-menu-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mellyssamnds/goomer-menu-api/issues"
+  },
+  "homepage": "https://github.com/mellyssamnds/goomer-menu-api#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.4",
+    "@types/node": "^24.9.1",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  }
+}
