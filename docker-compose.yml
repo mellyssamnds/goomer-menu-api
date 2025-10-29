@@ -1,0 +1,46 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: goomer-db
+    restart: always
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: goomer_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - goomer-net
+
+  api:
+    build: .
+    container_name: goomer-api
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: goomer_db
+      DB_USER: docker
+      DB_PASS: password
+      DB_DIALECT: postgres
+      DB_LOG: "true"
+    volumes:
+      - .:/usr/src/app
+    command: npm run dev
+    networks:
+      - goomer-net
+
+volumes:
+  pgdata:
+
+networks:
+  goomer-net:
+    driver: bridge
