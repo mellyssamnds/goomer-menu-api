@@ -14,15 +14,15 @@ export async function createPromotionService(
 ): Promise<Promotion> {
     // Validação da Regra de Negócio (15 minutos)
   if (
-    !isValidTimeInterval(data.start_time) ||
-    !isValidTimeInterval(data.end_time)
+    !isValidTimeInterval(data.startTime) ||
+    !isValidTimeInterval(data.endTime)
   ) {
     throw new Error(
       "Schedules must be in 15 minute intervals (ex: 18:00, 18:15, 18:30)"
     );
   }
 
-  if (data.promo_price <= 0) {
+  if (data.discountPrice <= 0) {
     throw new Error("The promotional price must be greater than zero.");
   }
 
@@ -45,10 +45,10 @@ export async function updatePromotionService(
   data: promotionRepository.UpdatePromotionDTO
 ): Promise<Promotion | null> {
     // Validação da Regra de Negócio (15 minutos)
-  if (data.start_time && !isValidTimeInterval(data.start_time)) {
+  if (data.startTime && !isValidTimeInterval(data.startTime)) {
     throw new Error("Start time should be in 15 minute intervals");
   }
-  if (data.end_time && !isValidTimeInterval(data.end_time)) {
+  if (data.endTime && !isValidTimeInterval(data.endTime)) {
     throw new Error("End time should be in 15 minute intervals");
   }
 
